@@ -1,0 +1,14 @@
+mschapv2: Tue Nov 21 14:48:49 2017
+username: marcelo
+challenge: a1:xx:xx:b5:6a:xx:xx:cb
+response: aa:32:4x:xx:x0:ce:25:d9:7x:xx:x1:d9:6a:f5:80:14:ex:xx:xf:01:6f:xx:xx:8f
+jtr NETNTLM: marcelo:$NETNTLM$a1xxxxb56axxxxcb$aa324xxxx0ce25d97xxxx1d96af58014exxxxf016fxxxx8f mschapv2: Tue Nov 21 14:49:16 2017
+
+
+echo 'marcelo:$NETNTLM$a1xxxxb56axxxxcb$aa324xxxx0ce25d97xxxx1d96af58014exxxxf016fxxxx8f' | perl -ne '/(.*?):\$.*?\$(.*?)\$(.*)/; print "$1::::$3:$2\n";'
+
+
+marcelo::::aa324xxxx0ce25d97xxxx1d96af58014exxxxf016fxxxx8f:a1xxxxb56axxxxcb
+
+
+hashcat64.exe -m 5500 -a 0 marcelo::::aa324xxxx0ce25d97xxxx1d96af58014exxxxf016fxxxx8f:a1xxxxb56axxxxcb example.dict 
